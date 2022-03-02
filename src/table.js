@@ -33,7 +33,7 @@ const Table = props => {
 	function delay(milisec) {
 		return new Promise(resolve => {
 			setTimeout(() => {
-				resolve("end");
+				resolve();
 			}, milisec);
 		});
 	}
@@ -41,14 +41,14 @@ const Table = props => {
 	const getTime = async () => {
 		if (orderDiners) {
 			setColor("red");
-			setTimeStamp(prev => ({ ...prev, startTime: Date.now() }));
+			setTimeStamp(prev => ({ ...prev, startTime: new Date().toString() }));
 			for (let i = 0; i < 3; i++) {
 				await delay(20000);
 				if (i == 0) setColor("orange");
 				if (i == 1) setColor("yellow");
 				if (i == 2) {
 					setColor("green");
-					setTimeStamp(prev => ({ ...prev, endTime: Date.now() }));
+					setTimeStamp(prev => ({ ...prev, endTime: new Date().toString() }));
 				}
 			}
 		}
